@@ -99,12 +99,36 @@ silently disable the intervention.
 
 ## Data
 
-`configs/**/data.csv_path` and `image_base_dir` point at a local `data/` directory (task CSVs,
-images, and — for boosting configs — precomputed POS-tag outputs under
-`data/tagged_outputs/...`) that isn't part of this repository. **A HuggingFace Datasets release
-with setup instructions is coming shortly** — this section will be updated with exact download and
-directory-layout steps once that's up. For now, treat `save_dir` and `data.*` paths in `configs/`
-as illustrative rather than run-ready.
+Task CSVs, images, precomputed POS-tag outputs, and our derived evaluation results are hosted
+separately on HuggingFace, not in this repo:
+[katha-ai-iiith/one_token_at_a_time](https://huggingface.co/datasets/katha-ai-iiith/one_token_at_a_time).
+
+```bash
+pip install -U "huggingface_hub[cli]"
+hf download katha-ai-iiith/one_token_at_a_time --repo-type dataset --local-dir data
+```
+
+This reconstructs a `data/` directory at the repo root matching exactly what `configs/**/*.yaml`
+expect (`data.csv_path`, `data.image_base_dir`, `boosting.style.pos_dir` / `blocking.style.pos_dir`):
+
+```
+one_token_at_a_time/
+├── data/          <- downloaded here
+├── configs/
+├── run_analysis.py
+└── ...
+```
+
+See the dataset's own README for full provenance/licensing per image subdirectory (the Fruit-Math
+and Fruit-Sport images are freely redistributable Open Images content and our own custom images;
+the VSR and ChartQA images originate from COCO and various public chart sources respectively, and
+are included only to ease reproducing this specific research — they belong to their original
+creators, not to us).
+
+**Known gap:** the Fruit-Math example `blocking.yaml`/`boosting.yaml` configs need precomputed POS
+tags that aren't included in the dataset release (the source data for that one task couldn't be
+reliably reconstructed — see the dataset README for why). VSR and Fruit-Sport's blocking/boosting
+configs work out of the box once the data above is downloaded.
 
 ## Usage
 

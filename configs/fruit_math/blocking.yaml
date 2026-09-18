@@ -3,6 +3,10 @@
 # where the model produces the FRUIT_CONCEPT span, using precomputed POS-tag
 # positions. Requires the POS-tagged generations described in the top-level
 # README's data section (data/tagged_outputs/...).
+#
+# NOTE: unlike VSR and Fruit-Sport, precomputed POS tags for Fruit-Math are
+# NOT included in the released dataset - see the matching note in
+# boosting.yaml for why, and how to generate your own.
 
 experiment_name: "fruit_math"
 save_dir: "./outputs/fruit_math/blocking/qvl_7b"
