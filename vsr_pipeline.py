@@ -2,19 +2,9 @@
 vsr_pipeline.py
 
 Runs the VSR attention-extraction analysis and computes per-run global attention
-means. This is the reproducible, self-contained part of the VSR workflow.
-
-Chains:
-  1. run_analysis.py                  -> per-layer attention .npz under save_dir
-  2. compute_attention_global_means   -> global_means/<dataset>__<model>.json
-
-What this does NOT do: the paper's semantic POS-tagging and accuracy grading of
-generated text were done via Gemini on Vertex AI. That orchestration (GCS upload,
-batch-job submission/polling, result parsing) is cluster/GCP-specific plumbing
-we don't ship here — reproduce it yourself against your own GCP project using
-the exact prompts we used:
-  - prompts/gemini_pos_tagging_vsr.txt      (semantic tagging of generated tokens)
-  - prompts/gemini_evaluation_vsr_accuracy.txt  (accuracy/alignment grading)
+means: run_analysis.py -> compute_attention_global_means. Semantic POS-tagging
+and accuracy grading (Gemini on Vertex AI) aren't part of this pipeline - see
+prompts/gemini_pos_tagging_vsr.txt and prompts/gemini_evaluation_vsr_accuracy.txt.
 
 Usage:
     python vsr_pipeline.py --config configs/vsr/vanilla.yaml [--skip_analysis] [--force]

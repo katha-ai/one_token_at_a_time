@@ -1,12 +1,7 @@
 # Fruit-Math with attention blocking: the 'image' chunk's attention is zeroed
 # out (lazy = only the last query row per step) for the generation step(s)
 # where the model produces the FRUIT_CONCEPT span, using precomputed POS-tag
-# positions. Requires the POS-tagged generations described in the top-level
-# README's data section (data/tagged_outputs/...).
-#
-# NOTE: unlike VSR and Fruit-Sport, precomputed POS tags for Fruit-Math are
-# NOT included in the released dataset - see the matching note in
-# boosting.yaml for why, and how to generate your own.
+# positions from data/tagged_outputs/otat_tagged_outputs/FrMaSc/.
 
 experiment_name: "fruit_math"
 save_dir: "./outputs/fruit_math/blocking/qvl_7b"

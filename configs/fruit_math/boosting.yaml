@@ -4,14 +4,6 @@
 # pos_tag_to_block are zipped positionally). only_first boosts just the first
 # matched token of each span. Requires the same precomputed POS tags as
 # blocking.yaml.
-#
-# NOTE: unlike VSR and Fruit-Sport, we can't ship precomputed POS tags for
-# Fruit-Math in the released dataset - the only POS-tagging output we have on
-# hand is the raw Gemini batch-response JSONL with no per-sample identifier
-# in it, so it can't be reliably split back into the per-sample files this
-# config's pos_dir expects. To run this config, first generate your own
-# tags for pos_dir='data/tagged_outputs/otat_tagged_outputs/FrMaSc/<model>/fruit_math/'
-# using prompts/gemini_pos_tagging_fruit_math.txt against your own generations.
 
 experiment_name: "fruit_math"
 save_dir: "./outputs/fruit_math/boosting/qvl_7b"

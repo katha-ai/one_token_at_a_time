@@ -125,11 +125,6 @@ the VSR and ChartQA images originate from COCO and various public chart sources 
 are included only to ease reproducing this specific research — they belong to their original
 creators, not to us).
 
-**Known gap:** the Fruit-Math example `blocking.yaml`/`boosting.yaml` configs need precomputed POS
-tags that aren't included in the dataset release (the source data for that one task couldn't be
-reliably reconstructed — see the dataset README for why). VSR and Fruit-Sport's blocking/boosting
-configs work out of the box once the data above is downloaded.
-
 ## Usage
 
 Every experiment is driven by a YAML config. `run_analysis.py` is the core entry point — it maps

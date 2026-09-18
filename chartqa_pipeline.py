@@ -2,18 +2,9 @@
 chartqa_pipeline.py
 
 Runs the ChartQA attention-extraction analysis and computes per-run global
-attention means. This is the reproducible, self-contained part of the ChartQA
-workflow.
-
-Chains:
-  1. run_analysis.py                  -> per-layer attention .npz under save_dir
-  2. compute_attention_global_means   -> global_means/<dataset>__<model>.json
-
-What this does NOT do: the paper's semantic POS-tagging of generated text was
-done via Gemini on Vertex AI. That orchestration (GCS upload, batch-job
-submission/polling, result parsing) is cluster/GCP-specific plumbing we don't
-ship here — reproduce it yourself against your own GCP project using the exact
-prompt we used: prompts/gemini_pos_tagging_chartqa.txt.
+attention means: run_analysis.py -> compute_attention_global_means. Semantic
+POS-tagging (Gemini on Vertex AI) isn't part of this pipeline - see
+prompts/gemini_pos_tagging_chartqa.txt.
 
 Usage:
     python chartqa_pipeline.py --config configs/chartqa/vanilla.yaml [--skip_analysis] [--force]
