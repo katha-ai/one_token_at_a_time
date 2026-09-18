@@ -1,0 +1,19 @@
+# Core
+torch
+transformers
+accelerate
+
+# Data / config
+pandas
+numpy
+pyyaml
+tqdm
+
+# Vision / image
+pillow
+qwen-vl-utils
+qwen-omni-utils
+
+# Plotting
+matplotlib
+natsort
