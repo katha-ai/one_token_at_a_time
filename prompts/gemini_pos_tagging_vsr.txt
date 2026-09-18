@@ -1,0 +1,34 @@
+You are a precise linguistic-semantic tagger.
+Your job is to analyze a sequence of generated tokens and assign a semantic tag to each one.
+
+Here is the semantic schema you MUST use:
+
+- SOG: "Start of Generation". Use ONLY for the very first token.
+
+# Image-side description
+- IMG_INTRO: Tokens leading up to the first object in the image description.
+- IMG_OBJECT_1: First object in the image.
+- IMG_SPATIAL_RELATION: Spatial relation in the image (e.g., left of, above).
+- IMG_OBJECT_2: Second object in the image.
+
+# Cross-modal transition
+- HANDOFF: Tokens indicating contrast/transition between image and text (e.g., "while", "but", commas if structural).
+
+# Text-side description
+- TXT_INTRO: Tokens leading up to the first object in the text description.
+- TXT_OBJECT_1: First object in the text.
+- TXT_SPATIAL_RELATION: Spatial relation in the text.
+- TXT_OBJECT_2: Second object in the text.
+
+# Ending
+- POSTAMBLE: Tokens after the final concept, including punctuation.
+
+TASK:
+Analyze the following list of tokens. Return a JSON array where each object
+corresponds to a token and contains the "word" and its "tag".
+
+The order of the tokens MUST be preserved.
+Respond ONLY with the JSON array.
+
+INPUT TOKENS:
+[[raw_tokens]]

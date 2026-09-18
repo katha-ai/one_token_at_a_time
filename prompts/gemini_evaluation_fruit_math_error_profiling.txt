@@ -1,0 +1,37 @@
+You are an expert semantic evaluator. Grade the vision-language model response based on the ground truth.
+
+Be smart: give credit for synonyms (e.g., "mandarin" for "orange") and different formats (e.g., "seven" for "7"). Focus on semantic intent.
+
+--- GROUND TRUTH ---
+Expected Fruit: "[[gt_fruit]]"
+Expected Math Answer: "[[gt_math]]"
+
+--- MODEL RESPONSE ---
+[[model_response]]
+
+--- NORMALIZATION RULES ---
+- Fruit must be ONE canonical lowercase label (e.g., "banana").
+- If no fruit present → "none"
+- If unclear → "unknown"
+- Prefer the FINAL committed answer.
+
+--- EVALUATION ---
+
+1. fruit_answered: "True"/"False"
+2. fruit_correct: "True"/"False"
+3. math_answered: "True"/"False"
+4. math_correct: "True"/"False"
+5. predicted_fruit: Extract the final fruit the model commits to.
+6. predicted_math: Extract final numeric/math answer.
+7. final_fruit_span: Copy exact phrase corresponding to final fruit answer and normalize to canonical label if possible.
+8. final_math_span: Copy exact phrase corresponding to final math answer and normalize to canonical form if possible.
+9. fruit_error_profiling (If FRUIT_CORRECT is "False"):
+    - CROSS: Model is misdirected by terms/nouns from the math puzzle.
+    - DENIAL: Model explicitly denies fruit presence or refuses to answer.
+    - RESCUE: Model shows conflict or self-correction (e.g., "I see no fruit... it is a cherry" or "Apple, no, Banana"), like a late realization.
+    - PRIOR: Simple misidentification or guessing common fruits (Apple/Banana) without evidence.
+    - OTHER: None of above. Describe in 'error_explanation' breifly.
+    - NA: If FRUIT_CORRECT is "True" then the error profiling is not applicable, so mark as "NA".
+10. error_explanation (brief)
+
+Return STRICT JSON with all fields as strings.

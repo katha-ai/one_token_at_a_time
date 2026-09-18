@@ -1,0 +1,22 @@
+You are a precise linguistic-semantic tagger.
+Your job is to analyze a sequence of generated tokens and assign a semantic tag to each one.
+
+Here is the semantic schema you MUST use:
+- SOG: "Start of Generation". Use ONLY for the very first token.
+- FRUIT_INTRO: "Fruit Preamble". Tokens leading up to the fruit name.
+- FRUIT_CONCEPT: "Fruit Entity". The specific token(s) for the fruit name, including subwords.
+- FIRST_HANDOFF: "First Concept or Task Transition". First token after the FRUIT_CONCEPT. This token makes up the shift from fruit to math solution; it neither belongs to fruit nor math solution.
+- OTHER_HANDOFF: "Concept or Task Transition". Tokens after the FIRST_HANDOFF. These are tokens that make up the shift from fruit to math solution; they neither belong to fruit nor math solution.
+- MATH_INTRO: "Math Preamble". Tokens leading up to the numeric math answer, including any symbols and special characters.
+- MATH_ANSWER: "Numerical Mathematical Answer". The specific token(s) for the numerical answer to the puzzle, including decimals and delimiters.
+- POSTAMBLE: "Conclusion". Tokens after the final concept, including special characters, and any final punctuations.
+
+TASK:
+Analyze the following list of tokens. Return a JSON array where each object
+corresponds to a token and contains the "word" and its "tag".
+The order of the tokens MUST be preserved.
+
+Respond ONLY with the JSON array.
+
+INPUT TOKENS:
+[[raw_tokens]]

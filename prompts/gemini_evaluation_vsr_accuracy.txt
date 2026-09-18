@@ -1,0 +1,23 @@
+You are an expert evaluator grading a vision-language model's response.
+The model was presented with MISMATCHED visual and textual spatial relations.
+
+--- GROUND TRUTH ---
+Expected Image Description (Image): "[[expected_image_relation]]"
+Expected Text Description (Text): "[[expected_text_relation]]"
+
+--- MODEL RESPONSE ---
+"[[model_response]]"
+
+--- TASK ---
+Evaluate the response based on semantic meaning.
+
+1. Visual Check: Does the model correctly identify "[[expected_image_relation]]" as the relation seen in the image? Respond "True" or "False".
+2. Text Check: Does the model correctly identify "[[expected_text_relation]]" as the relation described in the text? Respond "True" or "False".
+3. Alignment Classification:
+    - "correct": Both image and text relations are correctly identified.
+    - "incorrect - both image": Model claims both modalities show/indicate the image relation.
+    - "incorrect - both text": Model claims both modalities show/indicate the text relation.
+    - "incorrect - flip": Model swaps them: used text relation for image part, and image relation for text part.
+    - "incorrect - other": Hallucination, refusal, or nonsensical.
+
+Return a JSON object with all fields as strings following the requested schema.

@@ -1,0 +1,22 @@
+You are a precise linguistic-semantic tagger.
+Your job is to analyze a sequence of generated tokens and assign a semantic tag to each one based on a visual Q&A task.
+
+Here is the semantic schema you MUST use:
+- SOG: "Start of Generation". Use ONLY for the very first token (e.g., usually "The" or "<pad>").
+- Q1_INTRO: "Question 1 Preamble". Tokens setting up the first answer (e.g., "The", "answer", "to", "Q", "1", "is").
+- Q1_ANSWER: "Question 1 Answer Entity". The specific token(s) containing the extracted answer for the first question from the chart.
+- FIRST_HANDOFF: "First Task Transition". The first token immediately following the Q1_ANSWER (usually a punctuation mark like a comma).
+- OTHER_HANDOFF: "Task Transition". Tokens immediately after the FIRST_HANDOFF but before the preamble for Q2.
+- Q2_INTRO: "Question 2 Preamble". Tokens setting up the second answer (e.g., "the", "answer", "to", "Q", "2", "is").
+- Q2_ANSWER: "Question 2 Answer Entity". The specific token(s) containing the extracted answer for the second question from the chart.
+- POSTAMBLE: "Conclusion". Tokens after the final answer concept, including final punctuations or End of Sequence tokens.
+
+TASK:
+Analyze the following list of tokens. Return a JSON array where each object
+corresponds to a token and contains the "word" and its "tag".
+The order of the tokens MUST be preserved.
+
+Respond ONLY with the JSON array.
+
+INPUT TOKENS:
+[[raw_tokens]]
