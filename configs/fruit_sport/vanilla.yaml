@@ -1,0 +1,31 @@
+# Fruit-Sport, vanilla: the model is shown an image of a fruit plus a
+# sport-related text clue, and asked to name both the fruit and the sport.
+
+experiment_name: "fruit_sport"
+save_dir: "./outputs/fruit_sport/vanilla/qvl_7b"
+device: "auto"
+
+data:
+  csv_path: "data/csv/fruitScaled_sport_dataset_108.csv"
+  image_base_dir: "data/images"
+  black_image_path: "data/blank_black_image.png"
+
+generation:
+  num_tokens_to_generate: 25
+
+model:
+  type: "qwen_25_vl"
+  model_id: "Qwen/Qwen2.5-VL-7B-Instruct"
+  torch_dtype: "bfloat16"
+  attn_implementation: "eager"
+
+task:
+  image_type: 'actual'
+  name: "fruit_sport"
+  prompt_template: 'fruit_sport_prompt'
+
+blocking:
+  use_blocking: False
+
+boosting:
+  use_boosting: False

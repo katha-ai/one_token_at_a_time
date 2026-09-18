@@ -1,0 +1,40 @@
+# Fruit-Sport with attention blocking: the image's leading vision-start token
+# span is blocked for the FRUIT_CONCEPT generation step, using precomputed
+# POS-tag positions.
+
+experiment_name: "fruit_sport"
+save_dir: "./outputs/fruit_sport/blocking/qvl_7b"
+device: "auto"
+
+data:
+  csv_path: "data/csv/fruitScaled_sport_dataset_108.csv"
+  image_base_dir: "data/images"
+  black_image_path: "data/blank_black_image.png"
+
+generation:
+  num_tokens_to_generate: 25
+
+model:
+  type: "qwen_25_vl"
+  model_id: "Qwen/Qwen2.5-VL-7B-Instruct"
+  torch_dtype: "bfloat16"
+  attn_implementation: "eager"
+
+task:
+  image_type: 'actual'
+  name: "fruit_sport"
+  prompt_template: 'fruit_sport_prompt'
+
+blocking:
+  use_blocking: True
+  chunk_to_block: 'im_start_0'
+  method: 'lazy'
+  style:
+    type: 'precomputed'
+    pos_dir: 'data/tagged_outputs/otat_tagged_outputs/FrSc_Sp'
+    model: 'qvl_7b'
+    pos_tag_to_block: ['FRUIT_CONCEPT']
+    only_first: True
+
+boosting:
+  use_boosting: False

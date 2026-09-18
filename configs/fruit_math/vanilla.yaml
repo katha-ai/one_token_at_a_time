@@ -1,0 +1,33 @@
+# Fruit-Math, vanilla (no blocking/boosting): the model is shown an image of a
+# fruit plus a math puzzle in text, and asked to name the fruit and solve the
+# puzzle. See configs/fruit_math/blocking.yaml and boosting.yaml for the same
+# task with attention manipulation enabled.
+
+experiment_name: "fruit_math"
+save_dir: "./outputs/fruit_math/vanilla/qvl_7b"
+device: "auto"
+
+data:
+  csv_path: "data/csv/fruit_math_oid_scaled1K.csv"
+  image_base_dir: "data"
+  black_image_path: "data/blank_black_image.png"
+
+generation:
+  num_tokens_to_generate: 25
+
+model:
+  type: "qwen_25_vl"
+  model_id: "Qwen/Qwen2.5-VL-7B-Instruct"
+  torch_dtype: "bfloat16"
+  attn_implementation: "eager"
+
+task:
+  image_type: 'actual'
+  name: "fruit_math"
+  prompt_template: 'fruit_math_prompt'
+
+blocking:
+  use_blocking: False
+
+boosting:
+  use_boosting: False

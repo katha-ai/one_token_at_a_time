@@ -1,0 +1,28 @@
+# ChartQA, vanilla: the model is shown a chart image and two questions about
+# it, and asked to answer both. Vanilla-only in this codebase — blocking and
+# boosting were not run for this task.
+
+experiment_name: "chartqa_analysis"
+save_dir: "./outputs/chartqa/vanilla/qvl_7b"
+device: "auto"
+
+data:
+  csv_path: "data/csv/chartqa_300.csv"
+  image_base_dir: "data/images/ChartQA"
+
+generation:
+  num_tokens_to_generate: 128
+
+model:
+  type: "qwen_25_vl"
+  model_id: "Qwen/Qwen2.5-VL-7B-Instruct"
+  torch_dtype: "bfloat16"
+  attn_implementation: "eager"
+
+task:
+  name: "chartqa"
+  prompt_template: "chartqa_prompt_fullstop"
+  image_type: "natural"
+
+blocking:
+  use_blocking: False

@@ -1,0 +1,35 @@
+# Math-Fruit: the reversed-order variant of Fruit-Math — the model is asked to
+# solve the math puzzle first, then name the fruit. Same task class
+# (FruitMathTask) and data as configs/fruit_math/, only prompt_template
+# differs (math_fruit_prompt). Blocking/boosting configs for this variant
+# follow the same shape as configs/fruit_math/blocking.yaml and boosting.yaml
+# with prompt_template swapped.
+
+experiment_name: "fruit_math"
+save_dir: "./outputs/math_fruit/vanilla/qvl_7b"
+device: "auto"
+
+data:
+  csv_path: "data/csv/fruit_math_oid_scaled1K.csv"
+  image_base_dir: "data"
+  black_image_path: "data/blank_black_image.png"
+
+generation:
+  num_tokens_to_generate: 25
+
+model:
+  type: "qwen_25_vl"
+  model_id: "Qwen/Qwen2.5-VL-7B-Instruct"
+  torch_dtype: "bfloat16"
+  attn_implementation: "eager"
+
+task:
+  image_type: 'actual'
+  name: "fruit_math"
+  prompt_template: 'math_fruit_prompt'
+
+blocking:
+  use_blocking: False
+
+boosting:
+  use_boosting: False
