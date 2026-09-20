@@ -1,4 +1,4 @@
-<h1 align="center"><img src="media/bird.png" alt="" width="28" valign="middle"> One Token at a Time</h1>
+<h1 align="center"><img src="media/bird.png" alt="" width="28" valign="middle"> Attending to Multimodal Generation One Token at a Time</h1>
 <p align="center"><b>Tracking multimodal attention shifts during autoregressive generation</b></p>
 
 <p align="center">
