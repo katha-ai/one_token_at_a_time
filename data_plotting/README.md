@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="media/data_visuals.png" width="820">
+  <img src="https://github.com/katha-ai/one_token_at_a_time/blob/main/media/data_visuals.png" width="820">
 </p>
 
 There are two x-axes - the bottom one is the input token to the model at the given generation step, the top one is the token model emitted.
