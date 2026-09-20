@@ -2,10 +2,10 @@
 <p align="center"><b>Tracking multimodal attention shifts during autoregressive generation</b></p>
 
 <p align="center">
-  <a href="#">Paper</a> ·
-  <a href="#">arXiv</a> ·
-  <a href="https://katha-ai.github.io/projects/otat/">Project Page</a> ·
-  <a href="#citation">Citation</a>
+  <a href="https://arxiv.org/abs/2607.03738"><img src="https://img.shields.io/badge/arXiv-2607.03738-b31b1b.svg" alt="arXiv"></a>
+  <a href="https://huggingface.co/datasets/katha-ai-iiith/one_token_at_a_time"><img src="https://huggingface.co/datasets/huggingface/badges/resolve/main/dataset-on-hf-sm.svg" alt="Dataset on HF"></a>
+  <a href="https://katha-ai.github.io/projects/otat/"><img src="https://img.shields.io/badge/Project_Page-katha--ai.github.io-1f6feb.svg" alt="Project Page"></a>
+  <a href="#citation"><img src="https://img.shields.io/badge/Citation-BibTeX-4c9a2a.svg" alt="Citation"></a>
 </p>
 
 <p align="center">
@@ -196,11 +196,13 @@ media/                    Images/animations used in this README
 ## Citation
 
 ```bibtex
-@inproceedings{gupta2026otat,
-  title     = {Attending to Multimodal Generation One Token at a Time},
-  author    = {Gupta, Varun and Gandhi, Vineet and Tapaswi, Makarand},
-  booktitle = {ArXiv},
-  year      = {2026}
+@misc{gupta2026attending,
+      title={Attending to Multimodal Generation One Token at a Time},
+      author={Varun Gupta and Vineet Gandhi and Makarand Tapaswi},
+      year={2026},
+      eprint={2607.03738},
+      archivePrefix={arXiv},
+      primaryClass={cs.CV}
 }
 ```
 
